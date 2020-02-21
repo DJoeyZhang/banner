@@ -35,13 +35,13 @@ import java.util.List;
 import static java.lang.annotation.RetentionPolicy.SOURCE;
 
 
-public class Banner<T, BA extends BannerAdapter> extends FrameLayout {
+public class Banner<T extends BannerAdapter> extends FrameLayout {
     public static final String TAG = "banner_log";
     private ViewPager2 mViewPager2;
     private AutoLoopTask mLoopTask;
     private OnBannerListener listener;
     private OnPageChangeListener pageListener;
-    private BA mAdapter;
+    private BannerAdapter mAdapter;
     private Indicator mIndicator;
 
     // 是否自动播放
@@ -299,7 +299,7 @@ public class Banner<T, BA extends BannerAdapter> extends FrameLayout {
      */
 
     @NonNull
-    public BA getAdapter() {
+    public BannerAdapter getAdapter() {
         return mAdapter;
     }
 
@@ -429,7 +429,7 @@ public class Banner<T, BA extends BannerAdapter> extends FrameLayout {
      * @param adapter
      * @return
      */
-    public Banner setAdapter(@NonNull BA adapter) {
+    public Banner setAdapter(@NonNull BannerAdapter adapter) {
         if (adapter == null) {
             throw new NullPointerException(getContext().getString(R.string.banner_adapter_null_error));
         }
